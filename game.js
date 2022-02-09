@@ -1,5 +1,5 @@
 
-let hand = ['rock', 'scissor', 'paper'];
+let hand = ['rock', 'scissor', 'paper']; //hand of computer
 
 //generate a random hand for the computer
 function computerPlay(){
@@ -11,10 +11,7 @@ function computerPlay(){
 //play a single round of rock paper scissor
 function playRound(computerSelection, playerSelection ){
     
-    if(!(playerSelection == 'rock' || playerSelection == 'scissor' || playerSelection == 'paper')) {
-        alert("error: invalid input");
-        return "please try again";
-    }
+    
     switch (computerSelection){
         case 'rock':
             if (playerSelection == 'paper' ) return "You win! Paper beats Rock" 
@@ -35,10 +32,14 @@ function playRound(computerSelection, playerSelection ){
     }
 }
 
+
+
 /**
  * Play 5 rounds of rock paper scissor. 
  * If the user gives an invalid input, then that won't count towards the total rounds of 5. 
  */
+
+/*
 function game(){
     let playerScore = 0;
     let computerScore = 0;
@@ -54,7 +55,8 @@ function game(){
            result = playRound(computerPlay(),playerHand);
            alert(result);
            if(result.includes("win")) playerScore++;
-           else if(result.includes("lose")) computerScore++; 
+           else if(result.includes("lose")) computerScore++;
+           alert("Player score: " + playerScore + " Computer Score: " + computerScore); 
        }else{
            alert("please input a valid hand");
        }
@@ -69,3 +71,18 @@ function game(){
 }
 
 game();
+
+*/
+
+
+
+const b = document.querySelectorAll('.buttons');
+const div = document.querySelector('.result');
+
+b.forEach( a => a.addEventListener('click',getPlayerHand));
+
+function getPlayerHand(e){
+    console.log(playRound(computerPlay(), e.target.getAttribute("data-key")));
+    div.textContent = playRound(computerPlay(), e.target.getAttribute("data-key"));
+
+}
