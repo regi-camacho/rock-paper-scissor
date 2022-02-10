@@ -20,22 +20,21 @@ function checkScore(){
         container.append(endText);     
         playAgainButton.textContent = "restart"
         container.append(playAgainButton);   
-
-        b.forEach(a=> a.setAttribute('disabled',1));
-        
+        b.forEach(a=> a.removeEventListener('click', getPlayerHand));
     }
 }
 
-function restartGame(){
+function restartGame (){
     playerScore =0;
     computerScore =0;
     playerScoreBoard.textContent = "player score: " + playerScore;
     computerScoreBoard.textContent = "computer score: " + computerScore;
-    b.forEach(a=> a.removeAttribute('disabled'));
     container.removeChild(endText);
     container.removeChild(playAgainButton);
-
+    b.forEach(a=>a.addEventListener('click', getPlayerHand));
 }
+
+
 
 //generate a random hand for the computer
 function computerPlay(){
